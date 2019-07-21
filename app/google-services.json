@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "802886014733",
+    "firebase_url": "https://test-sense-8c25f.firebaseio.com",
+    "project_id": "test-sense-8c25f",
+    "storage_bucket": "test-sense-8c25f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802886014733:android:0a055946dc2d96f1",
+        "android_client_info": {
+          "package_name": "com.codeelit.ts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802886014733-avmc5it3bo1brs1anilkj9afgb5abodb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwFWz-Z_-TlIprjK23QkuSmQq2Xtq6r6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802886014733-avmc5it3bo1brs1anilkj9afgb5abodb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
