@@ -107,9 +107,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     sendUserData(inputName, inputPw);
                     Toast.makeText(RegistrationActivity.this, "You've been registered successfully.", Toast.LENGTH_SHORT).show();
-                    updateUI();
                     startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
-
+                    goToMainActivity();
                 } else {
                     progressDialog.dismiss();
                     Toast.makeText(RegistrationActivity.this, "Email already exists.", Toast.LENGTH_SHORT).show();
@@ -119,9 +118,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
     }
 
-    private void updateUI() {
-        startActivity(MainActivity);
-        finish();
+    private void goToMainActivity() {
+        Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }
 
 

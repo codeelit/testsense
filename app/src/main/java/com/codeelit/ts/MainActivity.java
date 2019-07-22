@@ -11,12 +11,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,6 +50,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.learn:
+                                getSupportActionBar().setTitle("Learn");
+                                break;
+                            case R.id.practice:
+                                getSupportActionBar().setTitle("Practice Tests");
+                                break;
+                            case R.id.companies:
+                                getSupportActionBar().setTitle("Companies Tests");
+                                break;
+                            case R.id.discussion:
+                                getSupportActionBar().setTitle("Discussion Forum");
+                                break;
+                        }
+                        return true;
+                    }
+                });
     }
 
     @Override
@@ -103,6 +129,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(loginActivity);
             finish();
+        } else if (id == R.id.learn) {
+            getSupportActionBar().setTitle("Learn");
+        } else if (id == R.id.practice) {
+            getSupportActionBar().setTitle("practice");
+        } else if (id == R.id.companies) {
+            getSupportActionBar().setTitle("companies");
+        } else if (id == R.id.discussion) {
+            getSupportActionBar().setTitle("discussion forum");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

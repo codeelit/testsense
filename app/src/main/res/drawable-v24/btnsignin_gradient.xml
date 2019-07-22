@@ -5,13 +5,13 @@
         <shape>
             <gradient
 
-                android:startColor="#0575E6"
-                android:endColor="#69f8e4"
+                android:startColor="#00E5FF"
+                android:endColor="#FF9100"
                 android:angle="0" />
 
 
             <corners
-                android:radius="4dp" />
+                android:radius="6dp" />
 
             <padding
                 android:right="10dp"
@@ -27,13 +27,13 @@
         <shape>
             <gradient
 
-                android:startColor="#69f8e4"
+                android:startColor="#00E5FF"
                 android:endColor="#0575E6"
                 android:angle="0" />
 
 
             <corners
-                android:radius="4dp" />
+                android:radius="6dp" />
 
             <padding
                 android:right="10dp"

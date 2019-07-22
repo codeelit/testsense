@@ -20,4 +20,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="web_client_id">802886014733-avmc5it3bo1brs1anilkj9afgb5abodb.apps.googleusercontent.com</string>
+
 </resources>

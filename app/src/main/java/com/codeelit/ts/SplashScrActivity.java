@@ -27,8 +27,8 @@ public class SplashScrActivity extends AppCompatActivity {
         init();
 
 
-        logoSplash.startAnimation(anim1);
-        anim1.setAnimationListener(new Animation.AnimationListener() {
+        logoSplash.startAnimation(anim3);
+        anim3.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
 
@@ -36,12 +36,11 @@ public class SplashScrActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                logoSplash.startAnimation(anim2);
+                logoSplash.startAnimation(anim3);
                 logoSplash.setVisibility(View.GONE);
 
-                logoWhite.startAnimation(anim3);
-                chmaraTech.startAnimation(anim3);
-                anim3.setAnimationListener(new Animation.AnimationListener() {
+                logoWhite.startAnimation(anim2);
+                anim2.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
 
@@ -50,8 +49,6 @@ public class SplashScrActivity extends AppCompatActivity {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         logoWhite.setVisibility(View.VISIBLE);
-                        chmaraTech.setVisibility(View.VISIBLE);
-
                         finish();
                         startActivity(new Intent(SplashScrActivity.this,RegistrationActivity.class));
                     }
@@ -81,7 +78,6 @@ public class SplashScrActivity extends AppCompatActivity {
 
         logoSplash = findViewById(R.id.ivLogoSplash);
         logoWhite = findViewById(R.id.ivLogoWhite);
-        chmaraTech = findViewById(R.id.ivCHTtext);
         anim1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
         anim2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadeout);
         anim3 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fadein);
