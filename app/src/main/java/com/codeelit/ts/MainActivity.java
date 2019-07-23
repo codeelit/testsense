@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 getSupportActionBar().setTitle("Learn");
                                 break;
                             case R.id.practice:
-                                getSupportActionBar().setTitle("Practice Tests");
+                                Intent intent=new Intent(MainActivity.this,practice.class);
+                                startActivity(intent);
                                 break;
                             case R.id.companies:
                                 getSupportActionBar().setTitle("Companies Tests");
