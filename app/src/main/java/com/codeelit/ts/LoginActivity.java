@@ -1,6 +1,7 @@
 package com.codeelit.ts;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.Auth;
@@ -27,6 +29,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -36,6 +40,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final int GOOGLE_SIGNIN_CODE = 1000;
     private ImageView logo, ivSignIn, btnTwitter;
     private AutoCompleteTextView login_mail, login_password;
     private TextView forgotPass, txt_signup;
@@ -44,6 +49,9 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseUser user;
     private ProgressDialog progressDialog;
     private Intent MainActivity;
+
+    Button sign_in_button;
+    GoogleSignInClient signInClient;
 
 
     @Override
@@ -58,6 +66,8 @@ public class LoginActivity extends AppCompatActivity {
         initializeGUI();
 
         user = firebaseAuth.getCurrentUser();
+        firebaseAuth = firebaseAuth.getInstance();
+
 
         if(user != null) {
             finish();
@@ -78,7 +88,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         txt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +103,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void updateUI(FirebaseUser user) {
+        if (user != null){
+            startActivity(new Intent(this, MainActivity.class));
+        }
+    }
 
     public void signUser(String email, String password){
         progressDialog.setMessage("Verificating...");
@@ -134,20 +148,18 @@ public class LoginActivity extends AppCompatActivity {
 
         if (user != null){
             //if user is already connected we should redirect him to home page
-            updateUI();
+            UpdateUI();
         }
     }
 
-    private void updateUI() {
+    private void UpdateUI() {
         startActivity(MainActivity);
         finish();
     }
 
-
     private void initializeGUI(){
 
         logo = findViewById(R.id.ivLogLogo);
-        ivSignIn = findViewById(R.id.ivSignIn);
         login_mail = findViewById(R.id.login_mail);
         login_password = findViewById(R.id.login_password);
         forgotPass = findViewById(R.id.tvForgotPass);
@@ -158,7 +170,6 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
     }
-
 
     public boolean validateInput(String inemail, String inpassword){
 

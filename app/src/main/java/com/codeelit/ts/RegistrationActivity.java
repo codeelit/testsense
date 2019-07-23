@@ -81,8 +81,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private void initializeGUI() {
 
         logo = findViewById(R.id.ivRegLogo);
-        joinus = findViewById(R.id.ivJoinUs);
-
         username = findViewById(R.id.atvUsernameReg);
         email = findViewById(R.id.atvEmailReg);
         password = findViewById(R.id.atvPasswordReg);

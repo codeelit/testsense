@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/splash_bg"
+    android:background="@drawable/login_bg"
     tools:context=".LoginActivity">
 
     <ScrollView
@@ -16,9 +16,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
+            android:layout_marginBottom="100dp"
             android:orientation="vertical">
 
 
@@ -32,25 +32,27 @@
                 android:src="@drawable/main_logo" />
 
 
-            <ImageView
-                android:id="@+id/ivSignIn"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="15dp"
-                android:contentDescription="Sign in text on registration activity"
-                android:src="@drawable/sign_in" />
+            <TextView
+                android:text="Login In"
+                android:textSize="28sp"
+                android:fontFamily="@font/mm"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                android:layout_marginBottom="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
             <AutoCompleteTextView
                 android:id="@+id/login_mail"
-                android:fontFamily="@font/mm"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_rect"
+                android:background="@drawable/reg_edittext_style"
                 android:drawableStart="@drawable/icon_person"
                 android:drawableLeft="@drawable/icon_person"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/mm"
                 android:hint="@string/emailReg"
                 android:inputType="textEmailAddress"
                 android:paddingStart="10dp"
@@ -62,14 +64,14 @@
 
             <AutoCompleteTextView
                 android:id="@+id/login_password"
-                android:fontFamily="@font/mm"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_rect"
+                android:background="@drawable/reg_edittext_style"
                 android:drawableStart="@drawable/icon_password"
                 android:drawableLeft="@drawable/icon_password"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/mm"
                 android:hint="@string/passwordReg"
                 android:inputType="textPassword"
                 android:paddingStart="10dp"
@@ -81,47 +83,39 @@
 
             <TextView
                 android:id="@+id/tvForgotPass"
-                android:fontFamily="@font/mm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
+                android:fontFamily="@font/mm"
                 android:text="@string/forgot_password"
-                android:textColor="@color/white" />
+                android:textColor="@color/black" />
 
 
             <Button
                 android:id="@+id/loginBtn"
-                android:fontFamily="@font/mm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/btnsignin_gradient"
+                android:layout_gravity="center"
+                android:background="@drawable/login_button_bk"
+                android:fontFamily="@font/mm"
                 android:text="@string/sign_inLog"
+                android:textStyle="bold"
                 android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/txt_signup"
-                android:fontFamily="@font/mm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/mm"
                 android:text="@string/signup_redirect"
-                android:textColor="@color/white" />
-
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/sign_in_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true" />
-
+                android:textColor="@color/black" />
 
         </LinearLayout>
-
 
     </ScrollView>
 
