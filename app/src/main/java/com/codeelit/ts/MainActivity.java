@@ -17,7 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.codeelit.ts.Fragments.CompaniesFragment;
+import com.codeelit.ts.Fragments.DiscussionFragment;
+import com.codeelit.ts.Fragments.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,25 +62,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        Fragment fragment=null;
                         switch (item.getItemId()) {
                             case R.id.learn:
-                                getSupportActionBar().setTitle("Learn");
+                                fragment=new HomeFragment();
                                 break;
                             case R.id.practice:
                                 Intent intent=new Intent(MainActivity.this,practice.class);
                                 startActivity(intent);
                                 break;
                             case R.id.companies:
-                                getSupportActionBar().setTitle("Companies Tests");
+                                fragment=new CompaniesFragment();
                                 break;
                             case R.id.discussion:
-                                getSupportActionBar().setTitle("Discussion Forum");
+                                fragment=new DiscussionFragment();
                                 break;
                         }
+
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
                         return true;
                     }
                 });
     }
+
+
 
     @Override
     public void onBackPressed() {
