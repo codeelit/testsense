@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
 
         >
 
@@ -32,7 +31,7 @@
                 android:id="@+id/ivRegLogo"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="55dp"
                 android:contentDescription="TODO"
                 android:scaleType="fitCenter"
@@ -114,7 +113,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
-                android:background="@drawable/login_button_bk"
+                android:background="@drawable/signup_button_bk"
                 android:text="@string/sign_upReg"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF" />
