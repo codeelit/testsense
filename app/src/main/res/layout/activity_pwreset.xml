@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/background"
+    android:background="@drawable/login_bg"
     tools:context=".PWresetActivity">
 
 
@@ -32,15 +32,18 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="55dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/logo" />
+                android:src="@drawable/main_logo" />
 
 
-            <ImageView
-                android:id="@+id/ivPassReset"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="15dp"
-                android:src="@drawable/password_reset" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/mm"
+                android:text="Password Reset"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/tvPWinfo"
@@ -59,28 +62,30 @@
                 android:id="@+id/atvEmailRes"
                 android:fontFamily="@font/mm"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_rect"
+                android:background="@drawable/reg_edittext_style"
                 android:drawableStart="@drawable/icon_person"
                 android:drawableLeft="@drawable/icon_person"
                 android:drawablePadding="10dp"
                 android:hint="@string/emailReg"
                 android:inputType="textEmailAddress"
+                android:layout_marginTop="-10dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textColor="@color/white"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/white"
                 android:textSize="15sp" />
 
 
             <Button
                 android:id="@+id/btnReset"
                 android:fontFamily="@font/mm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/btnsignin_gradient"
+                android:background="@drawable/login_button_bk"
                 android:text="Reset password"
                 android:textColor="#FFFFFF" />
 
@@ -93,7 +98,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Go back to Sign In."
-                android:textColor="@color/gray" />
+                android:textColor="@color/black" />
 
 
         </LinearLayout>
