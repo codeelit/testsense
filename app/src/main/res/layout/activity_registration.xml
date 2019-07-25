@@ -1,137 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/login_bg"
-    tools:context=".RegistrationActivity">
+    tools:context=".MainActivity">
 
 
-    <ScrollView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_gradient" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/background_white"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mm"/>
 
-
-        <LinearLayout
+        <EditText
+            android:id="@+id/atvUsernameReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="100dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:orientation="vertical">
+            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawablePadding="10dp"
+            android:hint="Name" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Email Address"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mm"/>
 
-            <ImageView
-                android:id="@+id/ivRegLogo"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="55dp"
-                android:contentDescription="TODO"
-                android:scaleType="fitCenter"
-                android:src="@drawable/main_logo" />
+        <EditText
+            android:id="@+id/atvEmailReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:drawablePadding="10dp"
+            android:hint="name@gmail.com" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Password"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mm"/>
 
-            <TextView
-                android:text="Sign Up"
-                android:textSize="28sp"
-                android:fontFamily="@font/mm"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:layout_marginBottom="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/atvPasswordReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_password_black_24dp"
+            android:drawablePadding="10dp"
+            android:hint="******"
+            android:inputType="textPassword"/>
 
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rec_gradient"
+            android:text="Sign Up"
+            android:fontFamily="@font/mm"
+            android:textAllCaps="false"
+            android:textColor="#FFF" />
 
-            <AutoCompleteTextView
-                android:id="@+id/atvUsernameReg"
-                android:fontFamily="@font/mm"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/reg_edittext_style"
-                android:drawableLeft="@drawable/icon_person"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/icon_person"
-                android:hint="@string/usernameReg"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="15sp" />
+        <TextView
+            android:id="@+id/tvSignIn"
+            android:fontFamily="@font/mm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/signin_redirect"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
+    <ImageView
+        android:id="@+id/ivRegLogo"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/background_white"
+        android:padding="5dp"
+        android:src="@drawable/main_logo" />
 
-            <AutoCompleteTextView
-                android:id="@+id/atvEmailReg"
-                android:fontFamily="@font/mm"
-                android:inputType="textEmailAddress"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/reg_edittext_style"
-                android:drawableLeft="@drawable/icon_mail"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/icon_mail"
-                android:hint="@string/emailReg"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="15sp" />
-
-
-
-            <AutoCompleteTextView
-                android:id="@+id/atvPasswordReg"
-                android:fontFamily="@font/mm"
-                android:inputType="textPassword"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/reg_edittext_style"
-                android:drawableLeft="@drawable/icon_password"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/icon_password"
-                android:hint="@string/passwordReg"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="15sp" />
-
-
-            <Button
-                android:id="@+id/btnSignUp"
-                android:fontFamily="@font/mm"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:background="@drawable/signup_button_bk"
-                android:text="@string/sign_upReg"
-                android:textStyle="bold"
-                android:textColor="#FFFFFF" />
-
-            <TextView
-                android:id="@+id/tvSignIn"
-                android:fontFamily="@font/mm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:text="@string/signin_redirect"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivRegLogo"
+        android:layout_centerHorizontal="true"
+        android:text="Sign Up"
+        android:textColor="#FFF"
+        android:fontFamily="@font/mm"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp" />
 </RelativeLayout>

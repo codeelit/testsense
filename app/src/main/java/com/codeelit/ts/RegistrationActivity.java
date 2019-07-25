@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegistrationActivity extends AppCompatActivity {
 
     private ImageView logo, joinus;
-    private AutoCompleteTextView username, email, password;
+    private EditText username, email, password;
     private Button signup;
     private TextView signin;
     private ProgressDialog progressDialog;
@@ -94,7 +95,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void registerUser(final String inputName, final String inputPw, String inputEmail) {
 
-        progressDialog.setMessage("Verificating...");
+        progressDialog.setMessage("Verifying...");
         progressDialog.show();
 
 

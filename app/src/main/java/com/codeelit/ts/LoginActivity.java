@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,16 +45,15 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final int GOOGLE_SIGNIN_CODE = 1000;
     private ImageView logo, ivSignIn, btnTwitter;
-    private AutoCompleteTextView login_mail, login_password;
+    private EditText login_mail, login_password;
     private TextView forgotPass, txt_signup;
-    private Button loginBtn;
+    private Button loginBtn, signUpbtn;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
     private ProgressDialog progressDialog;
     private Intent MainActivity;
 
-    Button sign_in_button;
-    GoogleSignInClient signInClient;
+    Animation btnAnim;
 
 
     @Override
@@ -63,10 +65,12 @@ public class LoginActivity extends AppCompatActivity {
         login_mail = findViewById(R.id.login_mail);
         login_password = findViewById(R.id.login_password);
         loginBtn = findViewById(R.id.loginBtn);
+        signUpbtn = findViewById(R.id.signUpBtn);
         initializeGUI();
 
         user = firebaseAuth.getCurrentUser();
         firebaseAuth = firebaseAuth.getInstance();
+        btnAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_animation);
 
 
         if(user != null) {
@@ -88,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        txt_signup.setOnClickListener(new View.OnClickListener() {
+        signUpbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this,RegistrationActivity.class));
@@ -110,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signUser(String email, String password){
-        progressDialog.setMessage("Verificating...");
+        progressDialog.setMessage("Verifying...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -166,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
         txt_signup = findViewById(R.id.txt_signup);
         loginBtn = findViewById(R.id.loginBtn);
         progressDialog = new ProgressDialog(this);
-
+        signUpbtn = findViewById(R.id.signUpBtn);
         firebaseAuth = FirebaseAuth.getInstance();
 
     }

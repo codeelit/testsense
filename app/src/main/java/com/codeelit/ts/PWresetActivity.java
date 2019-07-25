@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ public class PWresetActivity extends AppCompatActivity {
 
     private ImageView ivLogo,ivPWreset;
     private TextView tvInfo, tvSignin;
-    private AutoCompleteTextView atvEmail;
+    private EditText atvEmail;
     private Button btnReset;
     private FirebaseAuth firebaseAuth;
 
@@ -82,7 +83,6 @@ public class PWresetActivity extends AppCompatActivity {
         tvSignin = findViewById(R.id.tvGoBack);
         atvEmail = findViewById(R.id.atvEmailRes);
         btnReset = findViewById(R.id.btnReset);
-
         firebaseAuth = FirebaseAuth.getInstance();
 
     }

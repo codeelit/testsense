@@ -14,7 +14,7 @@
         <activity android:name=".practice"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".SplashScrActivity">
+        <activity android:name=".Intro.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

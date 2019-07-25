@@ -1,109 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg"
     tools:context=".PWresetActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ScrollView
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_gradient" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/background_white"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Email Address"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mm"/>
 
-
-        <LinearLayout
+        <EditText
+            android:id="@+id/atvEmailRes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginBottom="50dp"
-            android:orientation="vertical">
+            android:drawableRight="@drawable/icon_person"
+            android:drawablePadding="20dp"
+            android:hint="name@gmail.com" />
 
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rec_gradient"
+            android:text="Reset Password"
+            android:fontFamily="@font/mm"
+            android:textAllCaps="false"
+            android:textColor="#FFF" />
 
-            <ImageView
-                android:id="@+id/ivLogLogo"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="55dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/main_logo" />
+        <TextView
+            android:id="@+id/tvGoBack"
+            android:fontFamily="@font/mm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Go back to Sign In."
+            android:textColor="@color/black" />
+    </LinearLayout>
 
+    <ImageView
+        android:id="@+id/ivLogLogo"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/background_white"
+        android:padding="5dp"
+        android:src="@drawable/main_logo" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="0dp"
-                android:fontFamily="@font/mm"
-                android:text="Password Reset"
-                android:textColor="@color/black"
-                android:textSize="28sp" />
+    <TextView
+        android:id="@+id/pwr_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivLogLogo"
+        android:layout_centerHorizontal="true"
+        android:text="Password Reset"
+        android:textColor="#FFF"
+        android:fontFamily="@font/mm"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp" />
 
-            <TextView
-                android:id="@+id/tvPWinfo"
-                android:fontFamily="@font/mm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="20dp"
-                android:text="You will receive an email with instructions on resetting password."
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-
-
-            <AutoCompleteTextView
-                android:id="@+id/atvEmailRes"
-                android:fontFamily="@font/mm"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/reg_edittext_style"
-                android:drawableStart="@drawable/icon_person"
-                android:drawableLeft="@drawable/icon_person"
-                android:drawablePadding="10dp"
-                android:hint="@string/emailReg"
-                android:inputType="textEmailAddress"
-                android:layout_marginTop="-10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white"
-                android:textSize="15sp" />
-
-
-            <Button
-                android:id="@+id/btnReset"
-                android:fontFamily="@font/mm"
-                android:layout_width="250dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_button_bk"
-                android:text="Reset password"
-                android:textColor="#FFFFFF" />
-
-
-            <TextView
-                android:id="@+id/tvGoBack"
-                android:fontFamily="@font/mm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Go back to Sign In."
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
-
+    <TextView
+        android:id="@+id/tvPWinfo"
+        android:fontFamily="@font/mm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pwr_title"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:text="You will receive an email with instructions on resetting password."
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textColor="@color/white" />
 </RelativeLayout>
