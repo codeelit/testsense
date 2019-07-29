@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_password_black_24dp"
             android:drawablePadding="10dp"
+            android:inputType="textPassword"
             android:hint="******" />
 
         <TextView

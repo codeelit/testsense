@@ -18,28 +18,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
+import com.sdsmdg.tastytoast.TastyToast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -73,9 +60,9 @@ public class LoginActivity extends AppCompatActivity {
         btnAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_animation);
 
 
-        if(user != null) {
+        if (user != null) {
             finish();
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 String inEmail = login_mail.getText().toString();
                 String inPassword = login_password.getText().toString();
 
-                if(validateInput(inEmail, inPassword)){
+                if (validateInput(inEmail, inPassword)) {
                     signUser(inEmail, inPassword);
                 }
 
@@ -95,40 +82,39 @@ public class LoginActivity extends AppCompatActivity {
         signUpbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,RegistrationActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
             }
         });
 
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,PWresetActivity.class));
+                startActivity(new Intent(LoginActivity.this, PWresetActivity.class));
             }
         });
     }
 
     private void updateUI(FirebaseUser user) {
-        if (user != null){
+        if (user != null) {
             startActivity(new Intent(this, MainActivity.class));
         }
     }
 
-    public void signUser(String email, String password){
+    public void signUser(String email, String password) {
         progressDialog.setMessage("Verifying...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    TastyToast.makeText(getApplicationContext(), "Login Successful", TastyToast.LENGTH_LONG, TastyToast.SUCCESS);
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     goToMainActivity();
-                }
-                else{
+                } else {
                     progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this,"Invalid email or password",Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(getApplicationContext(), "Login Unsuccessful: Please check your email i'd and password", TastyToast.LENGTH_LONG, TastyToast.ERROR);
 
                 }
             }
@@ -141,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     @Override
@@ -150,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        if (user != null){
+        if (user != null) {
             //if user is already connected we should redirect him to home page
             UpdateUI();
         }
@@ -161,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    private void initializeGUI(){
+    private void initializeGUI() {
 
         logo = findViewById(R.id.ivLogLogo);
         login_mail = findViewById(R.id.login_mail);
@@ -175,13 +161,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public boolean validateInput(String inemail, String inpassword){
+    public boolean validateInput(String inemail, String inpassword) {
 
-        if(inemail.isEmpty()){
+        if (inemail.isEmpty()) {
             login_mail.setError("Email field is empty.");
             return false;
         }
-        if(inpassword.isEmpty()){
+        if (inpassword.isEmpty()) {
             login_password.setError("Password is empty.");
             return false;
         }

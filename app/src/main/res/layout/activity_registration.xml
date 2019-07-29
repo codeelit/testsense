@@ -24,6 +24,10 @@
             android:layout_weight="1" />
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/layoutInput"
         android:layout_width="match_parent"
@@ -105,6 +109,7 @@
             android:text="@string/signin_redirect"
             android:textColor="@color/black" />
     </LinearLayout>
+    </ScrollView>
 
     <ImageView
         android:id="@+id/ivRegLogo"

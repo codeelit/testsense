@@ -23,7 +23,6 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".PWresetActivity"></activity>
-        <activity android:name=".Dummy"></activity>
     </application>
 
 </manifest>

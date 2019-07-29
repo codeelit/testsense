@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.codeelit.ts.Fragments.CompaniesFragment;
 import com.codeelit.ts.Fragments.DiscussionFragment;
 import com.codeelit.ts.Fragments.HomeFragment;
+import com.codeelit.ts.Fragments.LearnFragment;
 import com.codeelit.ts.Fragments.PracticeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -41,60 +42,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Test Sense");
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        LearnFragment fragment1 = new LearnFragment();
+        FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+        ft1.replace(R.id.fragment_container, fragment1, "");
+        ft1.commit();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Fragment fragment=null;
+                        Fragment fragment = null;
                         switch (item.getItemId()) {
                             case R.id.learn:
-                                fragment=new HomeFragment();
-                                break;
+                                LearnFragment fragment1 = new LearnFragment();
+                                FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
+                                ft1.replace(R.id.fragment_container, fragment1, "");
+                                ft1.commit();
+                                return true;
                             case R.id.practice:
-                                fragment=new PracticeFragment();
-                                break;
+                                PracticeFragment fragment2= new PracticeFragment();
+                                FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
+                                ft2.replace(R.id.fragment_container, fragment2, "");
+                                ft2.commit();
+                                return true;
                             case R.id.companies:
-                                fragment=new CompaniesFragment();
-                                break;
+                                CompaniesFragment fragment3 = new CompaniesFragment();
+                                FragmentTransaction ft3 = getSupportFragmentManager().beginTransaction();
+                                ft3.replace(R.id.fragment_container, fragment3, "");
+                                ft3.commit();
+                                return true;
                             case R.id.discussion:
-                                fragment=new DiscussionFragment();
-                                break;
+                                DiscussionFragment fragment4 = new DiscussionFragment();
+                                FragmentTransaction ft4 = getSupportFragmentManager().beginTransaction();
+                                ft4.replace(R.id.fragment_container, fragment4, "");
+                                ft4.commit();
+                                return true;
                         }
-
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
                         return true;
                     }
                 });
     }
 
 
-
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+
+        super.onBackPressed();
+
     }
 
     @Override
@@ -149,9 +149,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.discussion) {
             getSupportActionBar().setTitle("discussion forum");
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }

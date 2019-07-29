@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.sdsmdg.tastytoast.TastyToast;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -105,12 +106,12 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     progressDialog.dismiss();
                     sendUserData(inputName, inputPw);
-                    Toast.makeText(RegistrationActivity.this, "You've been registered successfully.", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(getApplicationContext(), "You've been registered successfully.", TastyToast.LENGTH_LONG, TastyToast.SUCCESS);
                     startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
                     goToMainActivity();
                 } else {
                     progressDialog.dismiss();
-                    Toast.makeText(RegistrationActivity.this, "Email already exists.", Toast.LENGTH_SHORT).show();
+                    TastyToast.makeText(getApplicationContext(), "Email already exists.", TastyToast.LENGTH_LONG, TastyToast.ERROR);
                 }
             }
         });
