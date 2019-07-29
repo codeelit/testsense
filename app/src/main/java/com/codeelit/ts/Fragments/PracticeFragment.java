@@ -1,10 +1,14 @@
 package com.codeelit.ts.Fragments;
 
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,36 +20,42 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codeelit.ts.Adapter.MyAdapter;
 import com.codeelit.ts.R;
 import com.codeelit.ts.practice;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import model.Model;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PracticeFragment extends Fragment {
+    private ProgressDialog progressDialog;
+    RecyclerView recyclerView;
+    private Activity mActivity;
+    MyAdapter myAdapter;
+    ArrayList<String> list=new  ArrayList<String>();
 
-    private Button msendButton;
-    private Button mrecieveButton;
-    private Button submit;
-    private FirebaseFirestore db;
-    private TextView tv;
-    private RadioButton rb1;
-    private RadioButton rb2;
-    private RadioButton rb3;
-    private RadioButton rb4;
-    private RadioButton rb;
-    private String rightAnswer;
-    private RadioGroup rg;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("practice");;
 
     public PracticeFragment() {
         // Required empty public constructor
@@ -56,88 +66,52 @@ public class PracticeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.activity_practice, container, false);
+        View view = inflater.inflate(R.layout.fragment_practice, container, false);
 
-        msendButton = (Button) view.findViewById(R.id.button);
-        mrecieveButton = (Button) view.findViewById(R.id.button2);
-        submit = (Button) view.findViewById(R.id.submit);
-        tv = (TextView) view.findViewById(R.id.question);
-        rb1 = (RadioButton) view.findViewById(R.id.option1);
-        rb2 = (RadioButton) view.findViewById(R.id.option2);
-        rb3 = (RadioButton) view.findViewById(R.id.option3);
-        rb4 = (RadioButton) view.findViewById(R.id.option4);
-        rg = (RadioGroup) view.findViewById(R.id.radiog);
-        submit.setOnClickListener(new View.OnClickListener() {
+        recyclerView = view.findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        progressDialog = new ProgressDialog(getContext());
+
+
+
+
+
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                int selectedId = rg.getCheckedRadioButtonId();
-                rb = (RadioButton) view.findViewById(selectedId);
-                if (rb.getText().equals(rightAnswer)) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-                } else {
-
-
-
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                Log.e("Count ", "" + dataSnapshot.getChildrenCount());
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String name = postSnapshot.getKey();
+                    Log.e("Get Data", name);
+                    list.add(name);
                 }
 
+                myAdapter = new MyAdapter(getContext(), list);
+                recyclerView.setAdapter(myAdapter);
+                progressDialog.dismiss();
             }
-        });
-        mrecieveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DocumentReference contact = db.collection("practice1").document("question1");
-                contact.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        DocumentSnapshot doc = task.getResult();
-                        StringBuilder data = new StringBuilder("");
-                        tv.setText(doc.getString("question"));
-                        rb1.setText(doc.getString("optionA"));
-                        rb2.setText(doc.getString("optionB"));
-                        rb3.setText(doc.getString("optionC"));
-                        rb4.setText(doc.getString("optionD"));
-                        rightAnswer = doc.getString("correctAnswer");
-                    }
-                });
-            }
-        });
-        msendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                writedata();
 
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
-
 
         return view;
     }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-    private void writedata() {
-        db = FirebaseFirestore.getInstance();
-        Map<String, Object> newContact = new HashMap<>();
-        newContact.put("question", "How");
-        newContact.put("optionA", "some");
-        newContact.put("optionB", "thats how");
-        newContact.put("optionC", "like that");
-        newContact.put("optionD", "I see");
-        newContact.put("correctAnswer", "thats how");
-        newContact.put("explain", "because");
+        progressDialog.setMessage("Loading Tests...");
+        progressDialog.show();
 
-
-        db.collection("practice1").document("question1").set(newContact).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("Error", e.getMessage());
-            }
-        });
     }
 
 }

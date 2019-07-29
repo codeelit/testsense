@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.codeelit.ts.Fragments.CompaniesFragment;
 import com.codeelit.ts.Fragments.DiscussionFragment;
 import com.codeelit.ts.Fragments.HomeFragment;
+import com.codeelit.ts.Fragments.PracticeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -68,8 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 fragment=new HomeFragment();
                                 break;
                             case R.id.practice:
-                                Intent intent=new Intent(MainActivity.this,practice.class);
-                                startActivity(intent);
+                                fragment=new PracticeFragment();
                                 break;
                             case R.id.companies:
                                 fragment=new CompaniesFragment();
