@@ -50,7 +50,7 @@ public class SplashScrActivity extends AppCompatActivity {
                     public void onAnimationEnd(Animation animation) {
                         logoWhite.setVisibility(View.VISIBLE);
                         finish();
-                        startActivity(new Intent(SplashScrActivity.this,RegistrationActivity.class));
+                        startActivity(new Intent(SplashScrActivity.this, RegistrationActivity.class));
                     }
 
                     @Override
@@ -69,12 +69,10 @@ public class SplashScrActivity extends AppCompatActivity {
         });
 
 
-
-
     }
 
 
-    private void init(){
+    private void init() {
 
         logoSplash = findViewById(R.id.ivLogoSplash);
         logoWhite = findViewById(R.id.ivLogoWhite);

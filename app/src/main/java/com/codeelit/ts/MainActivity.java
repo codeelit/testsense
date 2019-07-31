@@ -25,6 +25,7 @@ import com.codeelit.ts.Fragments.DiscussionFragment;
 import com.codeelit.ts.Fragments.HomeFragment;
 import com.codeelit.ts.Fragments.LearnFragment;
 import com.codeelit.ts.Fragments.PracticeFragment;
+import com.codeelit.ts.Fragments.PracticeHome;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 ft1.commit();
                                 return true;
                             case R.id.practice:
-                                PracticeFragment fragment2= new PracticeFragment();
+                                PracticeHome fragment2= new PracticeHome();
                                 FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
                                 ft2.replace(R.id.fragment_container, fragment2, "");
                                 ft2.commit();

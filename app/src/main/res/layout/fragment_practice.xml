@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.PracticeFragment"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    tools:context=".Fragments.PracticeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
@@ -14,7 +14,6 @@
         android:layout_marginTop="30dp">
 
     </androidx.recyclerview.widget.RecyclerView>
-
 
 
 </LinearLayout>
