@@ -21,6 +21,10 @@
             android:id="@+id/discussion"
             android:icon="@drawable/ic_forum_black_24dp"
             android:title="Discussion Forum" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Discussion Forum" />
     </group>
 
 </menu>

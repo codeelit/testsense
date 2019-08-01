@@ -1,9 +1,9 @@
-package model;
+package com.codeelit.ts.model;
 
 public class Model {
 
     private String title, description;
-    private int img;
+
 
     public String getTitle() {
         return title;
@@ -21,11 +21,5 @@ public class Model {
         this.description = description;
     }
 
-    public int getImg() {
-        return img;
-    }
 
-    public void setImg(int img) {
-        this.img = img;
-    }
 }

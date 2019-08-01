@@ -14,9 +14,6 @@ import com.codeelit.ts.Dummy;
 import com.codeelit.ts.R;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import model.Model;
 
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 

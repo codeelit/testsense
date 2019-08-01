@@ -63,7 +63,6 @@ public class IntroActivity extends AppCompatActivity {
 
         tabIndicator.setupWithViewPager(screenPager);
 
-
         tabIndicator.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
