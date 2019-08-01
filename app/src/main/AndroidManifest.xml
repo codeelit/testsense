@@ -3,6 +3,7 @@
     package="com.codeelit.ts">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -11,6 +12,7 @@
         android:roundIcon="@mipmap/logo_noshadow"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AttemptTest"></activity>
         <activity android:name=".Intro.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,12 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".practice"></activity>
+        <activity android:name=".practice" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".PWresetActivity"></activity>
-        <activity android:name=".Dummy"></activity>
+        <activity android:name=".PWresetActivity" />
+        <activity android:name=".Dummy" />
     </application>
 
 </manifest>

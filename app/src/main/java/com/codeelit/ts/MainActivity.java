@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 ft1.commit();
                                 return true;
                             case R.id.practice:
-                                PracticeHome fragment2= new PracticeHome();
+                                PracticeFragment fragment2= new PracticeFragment();
                                 FragmentTransaction ft2 = getSupportFragmentManager().beginTransaction();
                                 ft2.replace(R.id.fragment_container, fragment2, "");
                                 ft2.commit();
